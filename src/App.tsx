@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {UncontrolledRating, ValuePropsTYpe} from "./components/UncontrolledRating/UncontrolledRating";
+import {Rating} from "./components/Rating/Rating";
+import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import {Accordion} from "./components/Accordion/Accordion";
+import UncontrolledOnOff from "./components/OnOff/UncontrolledOnOff";
+import OnOff from "./components/OnOff/OnOff";
 
+//function declaration
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    //полезное что-то
+
+    const[value, setValue] = useState<ValuePropsTYpe>(0);
+    const[collapsed, setCollapsed] = useState(false);
+    const[on, setOn] = useState(false);
+
+    //обязана вернуть jsx
+    return (
+        <div className="App">
+            <UncontrolledOnOff onChange={setOn}/> {on.toString()}
+        </div>
+    );
 }
 
+function PageTitle(props: any) {
+    console.log("AppTitle rendered");
+    return <h1>{props.title}</h1>
+
+}
 export default App;
